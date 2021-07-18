@@ -2,7 +2,7 @@
 
 [image1]: https://video.udacity-data.com/topher/2018/June/5b1ea778_reacher/reacher.gif "Trained Agent"
 
-# Project 1: Navigation
+# Project 2: Continuous Control
 
 ### Introduction
 This is the final project of the section 'Policy-Based Methods' of the Udacity Deep Reinforcement Learning 
