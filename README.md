@@ -14,33 +14,31 @@ In this environment, a double-jointed arm can move to target locations. A reward
 
 The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
-The task is continuous, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
+The task is continuous, and in order to solve the environment, your agent must get an average score of +30 over 100 consecutive episodes.
 
 ### Project description
 
-The sample Deep Q-Network solution for 'LunarLander-v2' was used as a starting point for this
-project. This sample solution, as-is, does allow to train the agent and obtain decent performance.
-In fact, the agent can get to an average reward of about 11 at around the 900th episode (rolling 
-average of latest 100 episodes.)
+This project consists in developing a reinforcement learning agent whose task is to solve the Reacher environment. More precisly:
+- Reviewing litterature to determine which algorithms is best suited for this environment, considering the continuous actions-space.
+- Learning and understanding the different alternatives (DDPG, D4PG, PPO), how they are different and when they are best performing.
+- Implementing the agent based on selected algorithm.
+- Training the agent to solve the environment.
 
-From that starting point, the following improvements were added:
-1. Using Double DQN when evaluating Q-values (method 'q_targets' of class Agent.)
-2. Implemented Prioritized Experience Replay (using
-   implementation from https://github.com/rlcode/per)
-3. Change the model architeture to Dueling DQN (model.py)
+There are also two versions of the Reacher environment:
+- The first version contains a single agent.
+- The second version contains 20 identical agents, each with its own copy of the environment.
 
-From these improvements, the agent converges to that same average reward to 11 in less than
-400 episodes.
+This project is looking to solve the first version, with a single agent.
 
 ### Trained agent
 
-To use the trained agent, simply import weights:
-```
-from dqn_agent import Agent
-agent = Agent()
-agent.save('./model_weights')
-```
+To use the trained agent, instantiate an agent with the class DDPGAgent (in the "Continuous_Control.ipynb" notebook) and load the model weights with:
 
+```
+agent = DDPGAgent()
+agent.load('successfull_model')
+```
+Note: make sure note to re-run the cell where the agent is trained, as training takes over 1 hour.
 ## Dependencies
 
 To set up your python environment to run the code in this repository, follow the instructions below.
@@ -102,4 +100,4 @@ python -m ipykernel install --user --name drlnd --display-name "drlnd"
 
 ### Training the agent
 
-Execute the cells in `Navigation.ipynb` to train the agent.
+Execute the cells in `Continuous_Control.ipynb` to train the agent.
